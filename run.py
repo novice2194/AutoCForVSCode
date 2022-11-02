@@ -5,8 +5,9 @@
 # Software: PyCharm
 from __future__ import print_function
 
+import ctypes
 import os
-import ctypes, sys
+import sys
 
 DRIVE = None
 BASE_PATH = None
