@@ -38,7 +38,7 @@ def install_mingw():
             mingw_path = str(BASE_PATH) + "\\mingw64"
             print(f"{windows_path=}\n{mingw_path=}")
             # todo:Remember to cancel
-            os.system(f"copy {mingw_path} {windows_path}")
+            os.system(f"xcopy /E/Y/J {mingw_path} {windows_path}")
             os.system(f"path=%path%;{windows_path}")
             pass
 
@@ -57,7 +57,7 @@ def install_plug():
             plug_file_abs_path = plug_path + f"\\{plug_file}"
             print(f"Path:{plug_file_abs_path}\nInstalling:{plug_file}\n")
             # todo:Remember to cancel
-            os.system(f"{code_path} {plug_file_abs_path}")
+            os.system(f"{code_path}\\code.exe {plug_file_abs_path}")
             pass
 
 
@@ -87,3 +87,5 @@ if __name__ == "__main__":
             ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
         else:  # in python2.x
             ctypes.windll.shell32.ShellExecuteW(None, u"runas", unicode(sys.executable), unicode(__file__), None, 1)
+    print("Run is OK!")
+    os.system("pause")
