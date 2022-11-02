@@ -4,8 +4,7 @@
 # Date: 2022/11/1 20:37
 # Software: PyCharm
 
-import os, pathlib
-from win32comext.shell import shell, shellcon
+import os
 
 DRIVE = None
 BASE_PATH = None
@@ -27,6 +26,7 @@ def install_mingw():
             windows_path = str(windows_path) + "\\mingw64"
             mingw_path = str(BASE_PATH) + "\\mingw64"
             print(f"{windows_path=}\n{mingw_path=}")
+            # todo:Remember to cancel
             # os.system(f"copy {mingw_path} {windows_path}")
             # os.system(f"path=%path%;{windows_path}")
             pass
@@ -44,6 +44,7 @@ def install_plug():
 
             plug_file_abs_path = plug_path + f"\\{plug_file}"
             print(f"Path:{plug_file_abs_path}\nInstalling:{plug_file}\n")
+            # todo:Remember to cancel
             # os.system(f"code {plug_file_abs_path}")
             pass
 
@@ -52,6 +53,7 @@ def install_vscode():
     vscode_path = os.getcwd() + "\\vscode\\download.exe"
     print(f"{vscode_path}\n")
     try:
+        # todo:Remember to cancel
         # os.system(f"{vscode_path}")
         pass
     except Exception as e:
