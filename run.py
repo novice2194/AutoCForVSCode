@@ -20,9 +20,16 @@ def init_var():  # init var
 
 
 def install_mingw():
-    windows_path = shell.SHGetPathFromIDList(shell.SHGetSpecialFolderLocation(0, shellcon.CSIDL_WINDOWS))
-    print(f"{windows_path=}")
-    pass
+    global BASE_PATH, DRIVE
+    if DRIVE is not None:
+        windows_path = DRIVE
+        if BASE_PATH is not None:
+            windows_path = str(windows_path) + "\\mingw64"
+            mingw_path = str(BASE_PATH) + "\\mingw64"
+            print(f"{windows_path=}\n{mingw_path=}")
+            # os.system(f"copy {mingw_path} {windows_path}")
+            # os.system(f"path=%path%;{windows_path}")
+            pass
 
 
 def install_plug():
