@@ -37,9 +37,11 @@ def install_mingw():
             windows_path = str(windows_path) + "\\mingw64"
             mingw_path = str(BASE_PATH) + "\\mingw64"
             print(f"{windows_path=}\n{mingw_path=}")
+            print(f"Running: xcopy /E/Y/J {mingw_path} {windows_path}")
+            print(f"Running: setx /M path '%path%;{windows_path}'")
             # todo:Remember to cancel
             os.system(f"xcopy /E/Y/J {mingw_path} {windows_path}")
-            os.system(f"setx -m PATH '%PATH%;{windows_path}'")
+            os.system(f"setx /M path '%path%;{windows_path}'")
             pass
 
 
@@ -56,6 +58,7 @@ def install_plug():
 
             plug_file_abs_path = plug_path + f"\\{plug_file}"
             print(f"Path:{plug_file_abs_path}\nInstalling:{plug_file}\n")
+            print(f"Running: '{code_path}\\bin\\code' {plug_file_abs_path}")
             # todo:Remember to cancel
             os.system(f"'{code_path}\\bin\\code' {plug_file_abs_path}")
             pass
