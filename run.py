@@ -4,7 +4,6 @@
 # Date: 2022/11/1 20:37
 # Software: PyCharm
 from __future__ import print_function
-from win32comext.shell import shell, shellcon
 
 import ctypes
 import os
@@ -38,10 +37,10 @@ def install_mingw():
             windows_path = str(windows_path) + "\\mingw64"
             mingw_path = str(BASE_PATH) + "\\mingw64"
             print(f"{windows_path=}\n{mingw_path=}")
-            print(f"Running: xcopy /E/Y/J {mingw_path} {windows_path}")
-            print(f"Running: setx /M path '%path%;{windows_path}'")
             # todo:Remember to cancel
+            print(f"Running: xcopy /E/Y/J {mingw_path} {windows_path}")
             os.system(f"xcopy /E/Y/J {mingw_path} {windows_path}")
+            print(f"Running: setx /M path '%path%;{windows_path}'")
             os.system(f'setx /M path "%path%;{windows_path}"')
             pass
 
@@ -49,12 +48,12 @@ def install_mingw():
 def install_plug():
     global BASE_PATH
     if BASE_PATH is not None:
-        user_path = os.path.expanduser('~')
+        user_path = os.path.expanduser('~') + "\\.vscode\\extensions"
         plug_path = str(BASE_PATH) + "\\extensions"
         print(f"User Path:{os.path.expanduser('~')}")
-        print(f"Running xcopy /E/Y/J {user_path} {plug_path}")
         # todo:Remember to cancel
-        os.system(f"xcopy /E/Y/J {user_path} {plug_path}")
+        print(f"Running xcopy /E/Y/J {plug_path} {user_path}")
+        os.system(f"xcopy /E/Y/J {plug_path} {user_path}")
 
 
 def install_vscode():
