@@ -4,6 +4,7 @@
 # Date: 2022/11/1 20:37
 # Software: PyCharm
 from __future__ import print_function
+from win32comext.shell import shell, shellcon
 
 import ctypes
 import os
@@ -41,27 +42,19 @@ def install_mingw():
             print(f"Running: setx /M path '%path%;{windows_path}'")
             # todo:Remember to cancel
             os.system(f"xcopy /E/Y/J {mingw_path} {windows_path}")
-            os.system(f"setx /M path '%path%;{windows_path}'")
+            os.system(f'setx /M path "%path%;{windows_path}"')
             pass
 
 
 def install_plug():
     global BASE_PATH
-    code_path = input("Code PATH:\n")
     if BASE_PATH is not None:
-        plug_path = str(BASE_PATH) + "\\plug"
-        print(os.listdir(plug_path))
-        for plug_file in os.listdir(plug_path):
-            global IGNORE_FILE
-            if plug_file in IGNORE_FILE:
-                continue
-
-            plug_file_abs_path = plug_path + f"\\{plug_file}"
-            print(f"Path:{plug_file_abs_path}\nInstalling:{plug_file}\n")
-            print(f"Running: '{code_path}\\bin\\code' {plug_file_abs_path}")
-            # todo:Remember to cancel
-            os.system(f"'{code_path}\\bin\\code' {plug_file_abs_path}")
-            pass
+        user_path = os.path.expanduser('~')
+        plug_path = str(BASE_PATH) + "\\extensions"
+        print(f"User Path:{os.path.expanduser('~')}")
+        print(f"Running xcopy /E/Y/J {user_path} {plug_path}")
+        # todo:Remember to cancel
+        os.system("xcopy /E/Y/J {user_path} {plug_path}")
 
 
 def install_vscode():
