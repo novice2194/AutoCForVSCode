@@ -1,4 +1,5 @@
 ### AutoCForVSCode
+本脚本用于自动配置 vscode c/c++ 环境 
 #### 配置
 ```
 1. python >= 3.8
