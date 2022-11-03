@@ -40,6 +40,11 @@ def install_mingw():
             # todo:Remember to cancel
             print(f"Running: xcopy /E/Y/J {mingw_path} {windows_path}")
             os.system(f"xcopy /E/Y/J {mingw_path} {windows_path}")
+
+            # backups Windows Path
+            os.system("path > out.txt")
+
+            # add Windows Path
             print(f'Running: setx /M path "%path%;{windows_path}\\bin"')
             os.system(f'setx /M path "%path%;{windows_path}\\bin"')
             pass
