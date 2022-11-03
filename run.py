@@ -54,7 +54,7 @@ def install_plug():
         print(f"User Path:{os.path.expanduser('~')}")
         print(f"Running xcopy /E/Y/J {user_path} {plug_path}")
         # todo:Remember to cancel
-        os.system("xcopy /E/Y/J {user_path} {plug_path}")
+        os.system(f"xcopy /E/Y/J {user_path} {plug_path}")
 
 
 def install_vscode():
